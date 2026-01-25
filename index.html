@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Campus Life</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- Sign-In Page -->
+  <div id="signinPage" class="page">
+    <h2>Sign In</h2>
+    <input type="text" id="username" placeholder="Username"><br>
+    <input type="password" id="password" placeholder="Password"><br>
+    <button onclick="signIn()">Sign In</button>
+  </div>
+
+  <!-- Home Page -->
+  <div id="homePage" class="page" style="display:none;">
+    <h1>Campus Life</h1>
+    <button onclick="showPage('timetablePage')">📅 Timetable</button>
+    <button onclick="showPage('studyPage')">👥 Study Groups</button>
+    <button onclick="showPage('lostPage')">🔍 Lost & Found</button>
+    <button onclick="showPage('eventPage')">🎉 Events</button>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <!-- Timetable Page -->
+  <div id="timetablePage" class="page" style="display:none;">
+    <h2>Timetable</h2>
+    <input type="text" id="course" placeholder="Course Name">
+    <input type="text" id="day" placeholder="Day">
+    <input type="text" id="time" placeholder="Time">
+    <button onclick="addTimetable()">Add</button>
+    <button onclick="showPage('homePage')">Back</button>
+    <div id="timetableList"></div>
+  </div>
+
+  <!-- Study Groups Page -->
+  <div id="studyPage" class="page" style="display:none;">
+    <h2>Study Groups</h2>
+    <input type="text" id="groupName" placeholder="Group Name">
+    <input type="text" id="subject" placeholder="Subject">
+    <button onclick="addStudy()">Add</button>
+    <button onclick="showPage('homePage')">Back</button>
+    <div id="studyList"></div>
+  </div>
+
+  <!-- Lost & Found Page -->
+  <div id="lostPage" class="page" style="display:none;">
+    <h2>Lost & Found</h2>
+    <input type="text" id="item" placeholder="Item Name">
+    <input type="text" id="description" placeholder="Description">
+    <input type="text" id="contact" placeholder="Contact">
+    <button onclick="addLost()">Add</button>
+    <button onclick="showPage('homePage')">Back</button>
+    <div id="lostList"></div>
+  </div>
+
+  <!-- Events Page -->
+  <div id="eventPage" class="page" style="display:none;">
+    <h2>Events</h2>
+    <input type="text" id="eventName" placeholder="Event Name">
+    <input type="text" id="eventDate" placeholder="Date">
+    <input type="text" id="eventLocation" placeholder="Location">
+    <button onclick="addEvent()">Add</button>
+    <button onclick="showPage('homePage')">Back</button>
+    <div id="eventList"></div>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
