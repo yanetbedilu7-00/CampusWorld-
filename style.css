@@ -1,39 +1,279 @@
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f6f8;
+/* Reset and base styles */
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.app {
-    max-width: 500px;
-    margin: auto;
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
     padding: 20px;
 }
 
-h1 {
-    text-align: center;
-    color: #2c3e50;
+#app {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.nav button {
-    width: 100%;
-    padding: 15px;
-    margin: 5px 0;
-    font-size: 16px;
-    border: none;
-    border-radius: 8px;
-    background: #3498db;
-    color: white;
-}
-
-.nav button:hover {
-    background: #2980b9;
-}
-
-.card {
+/* Page containers */
+.page {
     background: white;
-    padding: 15px;
-    border-radius: 10px;
-    margin-top: 15px;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    animation: fadeIn 0.3s ease-in;
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Headings */
+h1, h2 {
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 36px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+h2 {
+    font-size: 28px;
+    border-bottom: 3px solid #667eea;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+/* Form inputs */
+input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Buttons */
+button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    margin: 10px 10px 10px 0;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    font-family: inherit;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Lists containers */
+#timetableList, #studyList, #lostList, #eventList {
+    margin-top: 30px;
+}
+
+/* Card styles for list items */
+.timetable-item, .study-item, .lost-item, .event-item {
+    background: #f8f9fa;
+    border-left: 4px solid #667eea;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.timetable-item:hover, .study-item:hover, .lost-item:hover, .event-item:hover {
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transform: translateX(5px);
+}
+
+/* Item text styling */
+.timetable-item strong, .study-item strong, .lost-item strong, .event-item strong {
+    color: #2c3e50;
+    font-size: 18px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.timetable-item p, .study-item p, .lost-item p, .event-item p {
+    color: #666;
+    margin: 5px 0;
+    line-height: 1.5;
+}
+
+/* Delete button inside items */
+.delete-btn {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    padding: 6px 12px;
+    font-size: 14px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.delete-btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Sign In page specific */
+#signinPage {
+    max-width: 400px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+#signinPage h2 {
+    display: block;
+    text-align: center;
+}
+
+#signinPage input {
+    text-align: left;
+}
+
+/* Home page buttons grid */
+#homePage {
+    text-align: center;
+}
+
+#homePage button {
+    min-width: 200px;
+    margin: 10px;
+    font-size: 18px;
+    padding: 15px 30px;
+}
+
+/* Back button style */
+button:last-of-type {
+    background: linear-gradient(135deg, #868f96 0%, #596164 100%);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .page {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 28px;
+    }
+    
+    h2 {
+        font-size: 24px;
+    }
+    
+    #homePage button {
+        min-width: 150px;
+        font-size: 16px;
+        padding: 12px 20px;
+        width: calc(50% - 20px);
+    }
+    
+    button {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    #homePage button {
+        width: 100%;
+        margin: 10px 0;
+    }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #764ba2;
+}
+
+/* Loading animation for future use */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Utility classes */
+.text-center {
+    text-align: center;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
