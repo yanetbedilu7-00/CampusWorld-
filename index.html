@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Campus Life</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CampusWorld - Campus Life Management</title>
 <link rel="stylesheet" href="style.css">
-<img file_00000000224c71f8ace21ae4cb92ba49.png" alt="CampusWorld Logo" style="width:120px; display:block; margin:10px auto;">
-<h1 style="font-family:Arial; font-size:36px; color:#2c3e50; text-align:center;">CampusWorld</h1>
 </head>
 <body>
 
@@ -13,63 +12,156 @@
 
   <!-- Sign-In Page -->
   <div id="signinPage" class="page">
-    <h2>Sign In</h2>
-    <input type="text" id="username" placeholder="Username"><br>
-    <input type="password" id="password" placeholder="Password"><br>
-    <button onclick="signIn()">Sign In</button>
+    <div class="logo-container">
+      <div class="logo">CW</div>
+      <h1>CampusWorld</h1>
+      <p class="tagline">Your Campus Life Companion</p>
+    </div>
+    <div class="signin-box">
+      <h2>Welcome Back</h2>
+      <input type="text" id="username" placeholder="Username" autocomplete="off">
+      <input type="password" id="password" placeholder="Password">
+      <button onclick="signIn()" class="btn-primary">Sign In</button>
+      <p class="demo-hint">Demo: any username/password</p>
+    </div>
   </div>
 
   <!-- Home Page -->
   <div id="homePage" class="page" style="display:none;">
-    <h1>Campus Life</h1>
-    <button onclick="showPage('timetablePage')">📅 Timetable</button>
-    <button onclick="showPage('studyPage')">👥 Study Groups</button>
-    <button onclick="showPage('lostPage')">🔍 Lost & Found</button>
-    <button onclick="showPage('eventPage')">🎉 Events</button>
-    <button onclick="logout()">Logout</button>
+    <div class="header">
+      <div class="user-info">
+        <span id="currentUser" class="username-display"></span>
+      </div>
+      <button onclick="logout()" class="btn-logout">Logout</button>
+    </div>
+    <h1>Campus Life Dashboard</h1>
+    <div class="dashboard-grid">
+      <div class="card" onclick="showPage('timetablePage')">
+        <div class="card-icon"></div>
+        <h3>Timetable</h3>
+        <p>Manage your class schedule</p>
+      </div>
+      <div class="card" onclick="showPage('studyPage')">
+        <div class="card-icon"></div>
+        <h3>Study Groups</h3>
+        <p>Connect with peers</p>
+      </div>
+      <div class="card" onclick="showPage('lostPage')">
+        <div class="card-icon"></div>
+        <h3>Lost & Found</h3>
+        <p>Report lost items</p>
+      </div>
+      <div class="card" onclick="showPage('eventPage')">
+        <div class="card-icon"></div>
+        <h3>Events</h3>
+        <p>Campus activities</p>
+      </div>
+      <div class="card" onclick="showPage('announcementPage')">
+        <div class="card-icon"></div>
+        <h3>Announcements</h3>
+        <p>Important updates</p>
+      </div>
+      <div class="card" onclick="showPage('todoPage')">
+        <div class="card-icon"></div>
+        <h3>To-Do List</h3>
+        <p>Stay organized</p>
+      </div>
+    </div>
   </div>
 
   <!-- Timetable Page -->
   <div id="timetablePage" class="page" style="display:none;">
-    <h2>Timetable</h2>
-    <input type="text" id="course" placeholder="Course Name">
-    <input type="text" id="day" placeholder="Day">
-    <input type="text" id="time" placeholder="Time">
-    <button onclick="addTimetable()">Add</button>
-    <button onclick="showPage('homePage')">Back</button>
-    <div id="timetableList"></div>
+    <div class="page-header">
+      <button onclick="showPage('homePage')" class="btn-back">← Back</button>
+      <h2> Timetable Manager</h2>
+    </div>
+    <div class="form-container">
+      <input type="text" id="course" placeholder="Course Name">
+      <input type="text" id="day" placeholder="Day (e.g., Monday)">
+      <input type="text" id="time" placeholder="Time (e.g., 10:00 AM)">
+      <button onclick="addTimetable()" class="btn-primary">Add Course</button>
+    </div>
+    <div id="timetableList" class="items-list"></div>
   </div>
 
   <!-- Study Groups Page -->
   <div id="studyPage" class="page" style="display:none;">
-    <h2>Study Groups</h2>
-    <input type="text" id="groupName" placeholder="Group Name">
-    <input type="text" id="subject" placeholder="Subject">
-    <button onclick="addStudy()">Add</button>
-    <button onclick="showPage('homePage')">Back</button>
-    <div id="studyList"></div>
+    <div class="page-header">
+      <button onclick="showPage('homePage')" class="btn-back">← Back</button>
+      <h2> Study Groups</h2>
+    </div>
+    <div class="form-container">
+      <input type="text" id="groupName" placeholder="Group Name">
+      <input type="text" id="subject" placeholder="Subject">
+      <button onclick="addStudy()" class="btn-primary">Create Group</button>
+    </div>
+    <div id="studyList" class="items-list"></div>
   </div>
 
   <!-- Lost & Found Page -->
   <div id="lostPage" class="page" style="display:none;">
-    <h2>Lost & Found</h2>
-    <input type="text" id="item" placeholder="Item Name">
-    <input type="text" id="description" placeholder="Description">
-    <input type="text" id="contact" placeholder="Contact">
-    <button onclick="addLost()">Add</button>
-    <button onclick="showPage('homePage')">Back</button>
-    <div id="lostList"></div>
+    <div class="page-header">
+      <button onclick="showPage('homePage')" class="btn-back">← Back</button>
+      <h2> Lost & Found</h2>
+    </div>
+    <div class="form-container">
+      <input type="text" id="item" placeholder="Item Name">
+      <input type="text" id="description" placeholder="Description">
+      <input type="text" id="contact" placeholder="Contact Info">
+      <button onclick="addLost()" class="btn-primary">Report Item</button>
+    </div>
+    <div id="lostList" class="items-list"></div>
   </div>
 
   <!-- Events Page -->
   <div id="eventPage" class="page" style="display:none;">
-    <h2>Events</h2>
-    <input type="text" id="eventName" placeholder="Event Name">
-    <input type="text" id="eventDate" placeholder="Date">
-    <input type="text" id="eventLocation" placeholder="Location">
-    <button onclick="addEvent()">Add</button>
-    <button onclick="showPage('homePage')">Back</button>
-    <div id="eventList"></div>
+    <div class="page-header">
+      <button onclick="showPage('homePage')" class="btn-back">← Back</button>
+      <h2> Campus Events</h2>
+    </div>
+    <div class="form-container">
+      <input type="text" id="eventName" placeholder="Event Name">
+      <input type="date" id="eventDate">
+      <input type="text" id="eventLocation" placeholder="Location">
+      <button onclick="addEvent()" class="btn-primary">Add Event</button>
+    </div>
+    <div id="eventList" class="items-list"></div>
+  </div>
+
+  <!-- Announcements Page (New Functionality 1) -->
+  <div id="announcementPage" class="page" style="display:none;">
+    <div class="page-header">
+      <button onclick="showPage('homePage')" class="btn-back">← Back</button>
+      <h2> Campus Announcements</h2>
+    </div>
+    <div class="form-container">
+      <input type="text" id="announcementTitle" placeholder="Announcement Title">
+      <textarea id="announcementContent" rows="3" placeholder="Announcement Details..."></textarea>
+      <button onclick="addAnnouncement()" class="btn-primary">Post Announcement</button>
+    </div>
+    <div id="announcementList" class="items-list"></div>
+  </div>
+
+  <!-- To-Do List Page (New Functionality 2) -->
+  <div id="todoPage" class="page" style="display:none;">
+    <div class="page-header">
+      <button onclick="showPage('homePage')" class="btn-back">← Back</button>
+      <h2> Personal To-Do List</h2>
+    </div>
+    <div class="form-container">
+      <input type="text" id="todoTask" placeholder="Task description">
+      <select id="todoPriority">
+        <option value="high">High Priority</option>
+        <option value="medium">Medium Priority</option>
+        <option value="low">Low Priority</option>
+      </select>
+      <button onclick="addTodo()" class="btn-primary">Add Task</button>
+    </div>
+    <div class="todo-stats">
+      <div class="stat-card">Total Tasks: <span id="totalTasks">0</span></div>
+      <div class="stat-card">Completed: <span id="completedTasks">0</span></div>
+    </div>
+    <div id="todoList" class="items-list"></div>
   </div>
 
 </div>
