@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: 'Segoe UI', 'Poppins', 'Roboto', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: #1a1a1a;
     min-height: 100vh;
     padding: 20px;
@@ -23,7 +23,7 @@ body {
     border-radius: 24px;
     padding: 30px;
     box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-    animation: fadeInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    animation: fadeInUp 0.4s ease-out;
     border: 1px solid rgba(255,255,255,0.05);
 }
 
@@ -46,12 +46,6 @@ body {
     margin-bottom: 30px;
     padding-bottom: 20px;
     border-bottom: 2px solid rgba(255,255,255,0.1);
-}
-
-.user-info {
-    display: flex;
-    align-items: center;
-    gap: 15px;
 }
 
 .username-display {
@@ -112,7 +106,7 @@ h2 {
 button {
     font-family: inherit;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease;
     border: none;
     font-weight: 600;
 }
@@ -142,7 +136,6 @@ button {
     padding: 10px 20px;
     border-radius: 10px;
     font-size: 14px;
-    transition: all 0.3s ease;
 }
 
 .btn-back:hover {
@@ -164,7 +157,7 @@ button {
     border-radius: 20px;
     text-align: center;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease;
     border: 1px solid rgba(255,255,255,0.05);
     position: relative;
     overflow: hidden;
@@ -193,7 +186,9 @@ button {
 
 .card-icon {
     font-size: 48px;
+    font-weight: bold;
     margin-bottom: 15px;
+    color: #667eea;
 }
 
 .card h3 {
@@ -255,7 +250,6 @@ textarea {
     transition: all 0.3s ease;
     animation: slideIn 0.3s ease;
     border-left: 4px solid #667eea;
-    position: relative;
 }
 
 @keyframes slideIn {
@@ -299,6 +293,7 @@ textarea {
     margin-top: 10px;
     display: inline-block;
     color: white;
+    cursor: pointer;
 }
 
 .delete-btn:hover {
@@ -474,46 +469,4 @@ textarea {
     .todo-stats {
         grid-template-columns: 1fr;
     }
-}
-
-/* Loading Animation */
-.loading {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border: 3px solid rgba(102,126,234,0.3);
-    border-top: 3px solid #667eea;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Tooltip */
-[data-tooltip] {
-    position: relative;
-}
-
-[data-tooltip]:before {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 5px 10px;
-    background: #667eea;
-    color: white;
-    font-size: 12px;
-    border-radius: 6px;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s;
-}
-
-[data-tooltip]:hover:before {
-    opacity: 1;
 }
